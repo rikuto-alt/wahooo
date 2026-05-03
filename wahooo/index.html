@@ -1,11 +1,160 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>自分のサイト</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub × Unity 講座</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #24292f;
+      color: white;
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 24px;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      padding-left: 12px;
+      border-left: 6px solid #0969da;
+      color: #0969da;
+      font-size: 22px;
+    }
+
+    ol, ul {
+      padding-left: 24px;
+    }
+
+    .note {
+      background: #fff8c5;
+      border-left: 6px solid #d4a72c;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .flow {
+      background: #ddf4ff;
+      border-left: 6px solid #54aeff;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .warning {
+      background: #ffebe9;
+      border-left: 6px solid #cf222e;
+      padding: 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 24px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h1>こんにちは！</h1>
-  <p>公開成功！</p>
+  <header>
+    <h1>GitHub × Unity 講座</h1>
+    <p>GitHub Desktopを使ったUnity共同開発の基本手順</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>① 自分のブランチに変更を反映させる方法</h2>
+      <ol>
+        <li>GitHub Desktopで自分のブランチに切り替えて、Unityで編集する。</li>
+        <li>GitHub Desktopで、自分のブランチの状態でコミットする。</li>
+        <li>そのまま <strong>Push origin</strong> を押す。</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>② 自分のブランチの変更をmainブランチに反映させる方法</h2>
+      <ol>
+        <li>GitHub Desktopで、自分のブランチにいる状態で <strong>Fetch origin</strong> を押す。</li>
+        <li>青色のボタン <strong>Create pull request</strong> が出てくるので押す。</li>
+        <li>GitHubのブラウザ画面が開く。</li>
+        <li><strong>Pull Request</strong> のボタンが出てくるので、コメントを書いてから押す。</li>
+        <li>マージ先が <strong>main</strong> になっていることを確認してから、<strong>merge</strong> を押す。</li>
+      </ol>
+
+      <div class="note">
+        <strong>補足：</strong><br />
+        mainへの変更を自分で確認する場合、GitHub Desktopでブランチをmainに切り替えてからUnityを開くと確認できるはずです。
+        うまくいかない場合は、GitHub Desktopでmainにいる状態でPushやFetchを押したり、Unityを開き直したりすると良いかもしれません。
+      </div>
+    </section>
+
+    <section>
+      <h2>③ mainブランチの状態を自分のブランチに持ってくる方法</h2>
+      <ol>
+        <li>GitHub Desktopで、mainを反映させたいブランチを選択する。</li>
+        <li>メニューの <strong>Branch</strong> → <strong>Update from main</strong> を押す。</li>
+        <li>GitHub Desktopで <strong>Push origin</strong> を押す。</li>
+      </ol>
+
+      <div class="note">
+        <strong>補足：</strong><br />
+        編集中でmainにマージしていない自分のブランチに対してこの作業をしても、mainの内容と編集中の内容が統合されるため、基本的に情報が失われることはありません。
+        ただし、mainと自分のブランチで同じオブジェクトを触っていると、コリジョンが発生する可能性があります。
+      </div>
+    </section>
+
+    <section>
+      <h2>基本的な作業の流れ</h2>
+      <div class="flow">
+        <ul>
+          <li>自分がUnityで作業したい場合は、① → ② の順番で作業する。その後、Slackで「マージしてください」と一言送る。</li>
+          <li>誰かが「マージしてください」と言った場合は、③を実施する。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>注意事項</h2>
+      <div class="warning">
+        絶対にmainブランチで作業しないこと。必ずブランチを切ってから作業すること。
+      </div>
+      <ul>
+        <li>担当する面やオブジェクトだけを触る。</li>
+        <li>他の人が編集したものや触っていそうなオブジェクトを触りたい場合は、事前に一言伝える。</li>
+        <li>同じオブジェクトを複数人で編集すると、コリジョンが発生する可能性がある。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>GitHub × Unity 講座</p>
+  </footer>
 </body>
 </html>
